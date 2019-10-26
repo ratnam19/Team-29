@@ -68,6 +68,7 @@
               <th>Mobile Phone</th>
               <th>Station Number</th>
               <th>Start Date</th>
+              <th>Member Status</th>
             </tr>
           </thead>
           <tbody>
@@ -79,6 +80,8 @@
               <td>{{p.mobilePhone}}</td>
               <td>{{p.stationNumber}}</td>
               <td>{{p.startDate}}</td>
+              <td v-if="p.isActive==1">Active</td>
+              <td v-if="p.isActive==0">Inactive</td>
             </tr>
           </tbody>
         </table>

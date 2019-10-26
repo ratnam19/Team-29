@@ -78,7 +78,7 @@
                 </div>
                 <div class="form-group col-xl-12 col-md-12 col-sm-12 col-xs-12">
                   <label for="gender">Gender</label>
-                  <input type="text" class="form-control" id="gender" aria-describedby="Sab" placeholder="M|F" v-model="recordPerson.sab">
+                  <input type="text" class="form-control" id="gender" aria-describedby="Gender" placeholder="M|F" v-model="recordPerson.gender">
                 </div>
               </div>
               <div class="row col-xl-6 col-md-6 col-sm-12 col-xs-12">
@@ -141,12 +141,12 @@
                 <input type="date" class="form-control" id="startDate" aria-describedby="StartDate" placeholder="2019-01-01" v-model="recordPerson.startDate">
               </div>
               <div class="form-check col-xl-3 col-md-3">
-                <input type="checkbox" class="form-check-input" id="isActive">
-                <label class="form-check-label" for="isActive" > Active?</label>
+                <label class="form-check-label" for="isActive"> Active?</label>
+                <input type="checkbox" class="form-check-input" true-value=1 false-value=0 id="isActive" v-model="recordPerson.isActive">
               </div>
               <div class="form-check col-xl-3 col-md-3">
-                <input type="checkbox" class="form-check-input" id="isEmployee">
-                <label class="form-check-label" for="isEmployee" > Employee?</label>
+                <label class="form-check-label" for="isEmployee"> Employee?</label>
+                <input type="checkbox" class="form-check-input" true-value="1" false-value="0" id="isEmployee" v-model="recordPerson.isEmployee">
               </div>
             </div>
             <div class="row">
@@ -161,7 +161,6 @@
         <div> OCFRE: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Bloomington,Oconee County, Georgia 47408 |+1(812)456-345 </div>
       </footer>
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/af.js"></script>
       <script src="js/list.app.js"></script>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

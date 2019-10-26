@@ -6,17 +6,17 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 $stmt = $db->prepare(
-  'INSERT INTO Certification
-    (certificationId, certificationName, certifyingAgency, expiryPeriod)
-  VALUES (?, ?, ?, ?)'
+  'UPDATE Certification
+    SET certificationName=?, certifyingAgency=?, expiryPeriod=?
+    WHERE certificationId = ?'
 );
+
 $stmt->execute([
-  $_POST['certificationId'],
   $_POST['certificationName'],
   $_POST['certifyingAgency'],
-  $_POST['expiryPeriod']
+  $_POST['expiryPeriod'],
+  $_POST['certificationId']
 ]);
-
 
 // Step 4: Output
 header('HTTP/1.1 303 See Other');

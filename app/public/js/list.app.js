@@ -2,10 +2,8 @@ var personListApp = new Vue({
   el: '#personListApp',
   data: {
     person: [],
-    recordPerson: {},
-    filter: {
-      sab: ''
-    }
+    selectedPerson: {},
+    recordPerson: {}
   },
   methods: {
     fetchPersons() {
@@ -34,11 +32,57 @@ var personListApp = new Vue({
         firstName: '',
         lastName: '',
         dob: '',
-        gender: ''
+        gender: '',
+        mobilePhone: '',
+        workPhone: '',
+        email: '',
+        street: '',
+        region: '',
+        state: '',
+        city: '',
+        zip: '',
+        stationNumber: '',
+        radioNumber: '',
+        position: '',
+        startDate: '',
+        isActive: '',
+        isEmployee: ''
       }
     },
     handleRowClick(person) {
-      personTriageApp.person = person;
+      personListApp.selectedPerson = person;
+    },
+    handleEdit(event) {
+      fetch('api/list/edit.php', {
+        method: 'POST',
+        body: JSON.stringify(this.selectedPerson),
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      })
+      .then( response => response.json() )
+      .then( json => {personListApp.person.push( json[0] )})
+      .catch( err => {
+        console.error('RECORD EDIT ERROR:');
+        console.error(err);
+      });
+      this.handleReset();
+    },
+    handleDelete(event) {
+      fetch('api/list/delete.php', {
+        method: 'POST',
+        body: JSON.stringify(this.selectedPerson),
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      })
+      .then( response => response.json() )
+      .then(json => { personListApp.person = json })
+      .catch( err => {
+        console.error('RECORD DELETE ERROR:');
+        console.error(err);
+      });
+      this.handleReset();
     }
   }, // end methods
   created() {

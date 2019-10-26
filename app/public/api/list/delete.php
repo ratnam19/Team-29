@@ -6,19 +6,15 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 $stmt = $db->prepare(
-  'INSERT INTO Certification
-    (certificationId, certificationName, certifyingAgency, expiryPeriod)
-  VALUES (?, ?, ?, ?)'
+  'DELETE FROM Person
+    WHERE personId = ?'
 );
-$stmt->execute([
-  $_POST['certificationId'],
-  $_POST['certificationName'],
-  $_POST['certifyingAgency'],
-  $_POST['expiryPeriod']
-]);
 
+$stmt->execute([
+  $_POST['personId']
+]);
 
 // Step 4: Output
 header('HTTP/1.1 303 See Other');
 header('Content-Type: application/json');
-header('Location: ../certification/');
+header('Location: ../list/');

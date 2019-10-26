@@ -60,20 +60,21 @@
     <table id="certifDetailsApp" class="table table-sm table-hover">
       <thead>
         <tr>
+          <th>Certification Id</th>
           <th>Certification Name</th>
           <th>Certification Agency</th>
-          <th>Standard Expiry</th>
+          <th>Standard Expiry Period</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="c in certifications">
+            <td>{{c.certificationId}}</td>
           <td>{{c.certificationName}}</td>
           <td>{{c.certifyingAgency}}</td>
-          <td>{{c.expirationDate}}</td>
+          <td>{{c.expiryPeriod}} years</td>
         </tr>
       </tbody>
     </table>
-    
   <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
    <div> OCFRE: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Bloomington, Monroe County, Indiana 47408 |+1(812)456-345 </div>
    </footer>

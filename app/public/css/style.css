@@ -12,6 +12,10 @@ h3{
   color: maroon;
   text-align: center;
 }
+form{
+  padding: 80px;
+  margin: 50px;
+}
 table{
   margin: auto;
 }

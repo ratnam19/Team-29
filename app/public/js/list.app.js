@@ -2,6 +2,7 @@ var personListApp = new Vue({
   el: '#personListApp',
   data: {
     person: [],
+    assignedMember:{},
     selectedPerson: {},
     recordPerson: {}
   },

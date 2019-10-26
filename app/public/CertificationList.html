@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css\style.css">
+  <title>Certification List</title>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B22222">
+    <a class="navbar-brand" href="#">Navigation</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="MemberList.html">Member List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="CertificationList.html">Certification List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="AddMember.html">Add Member</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="AddCertification.html">Add Certification</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="certificationDetails.html">Certification Status</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="memberCertifications.html">Member Certifications</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reports
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="CertificationList.html">Certifications</a>
+            <a class="dropdown-item" href="MemberList.html">Member Summary</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+   <main>
+   <body>
+    <!--List of Certifications-->
+    <div class="mx-auto">
+      <h3>Certification List</h3>
+    </div>
+
+    <table id="certifDetailsApp" class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th>Certification Name</th>
+          <th>Certification Agency</th>
+          <th>Standard Expiry</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="c in certifications">
+          <td>{{c.certificationName}}</td>
+          <td>{{c.certifyingAgency}}</td>
+          <td>{{c.expirationDate}}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+  <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
+   <div> OCFRE: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Bloomington, Monroe County, Indiana 47408 |+1(812)456-345 </div>
+   </footer>
+</main>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/certdet.app.js"></script>
+</body>
+</html>

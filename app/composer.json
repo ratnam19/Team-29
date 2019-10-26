@@ -1,0 +1,14 @@
+{
+    "name": "iu-msis/ocfre",
+    "description": "An in-class example project",
+    "license": "private",
+    "authors": [{
+        "name": "Team 29"
+    }],
+    "require": {
+      "ramsey/uuid": "^3.8"
+    },
+    "autoload": {
+        "classmap": ["class/DbConnection.php"]
+    }
+}

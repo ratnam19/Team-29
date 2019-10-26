@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css\style.css">
+  <title>Add New Member</title>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B22222">
+    <a class="navbar-brand" href="#">Navigation</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="MemberList.html">Member List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="CertificationList.html">Certification List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="AddMember.html">Add Member</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="AddCertification.html">Add Certification</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="certificationDetails.html">Certification Status</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="memberCertifications.html">Member Certifications</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reports
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="CertificationList.html">Certifications</a>
+            <a class="dropdown-item" href="MemberList.html">Member Summary</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <body>
+
+      <div>
+        <!-- Add Certification Heading (Change to an auto center command)-->
+        <div class="mx-auto" style="width:200px;">
+          <h3>Add Certification</h3>
+        </div>
+
+        <!-- Add Certification Form -->
+        <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+          <div id="certifDetailsApp">
+            <form @submit.prevent="handleSubmit" class="form-inline">
+              <div class="row col-xl-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group col-xl-12 col-md-12 col-sm-12 col-xs-12">
+                  <label for="certificationName">Certification Name</label>
+                  <input type="text" class="form-control" id="certificationName" aria-describedby="Certi" placeholder="Certification Name" v-model="recordCerti.certificationName">
+                </div>
+                <div class="form-group col-xl-12 col-md-12 col-sm-12 col-xs-12">
+                  <label for="certifyingAgency">Certifying Agency</label>
+                  <input type="text" class="form-control" id="certifyingAgency" aria-describedby="Agency" placeholder="Certifying Agency" v-model="recordCerti.certifyingAgency">
+                </div>
+                <div class="form-group col-xl-12 col-md-12 col-sm-12 col-xs-12">
+                  <label for="expirationDate">Expiration Date</label>
+                  <input type="date" class="form-control" id="dob" aria-describedby="Expiration" placeholder="2001-12-13" v-model="recordCerti.expirationDate">
+                </div>
+            </div>
+            <div class="row">
+              <br>
+              <button type="submit" class="btn center">Create New Certification</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
+        <div> OCFRE: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Bloomington,Oconee County, Georgia 47408 |+1(812)456-345 </div>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/af.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="js/list.app.js"></script>
+      <script src="js/waiting.app.js"></script>
+      <script src="js/triage.app.js"></script>
+      <script src="js/certdet.app.js"></script>
+    </main>
+  </body>
+  </html>

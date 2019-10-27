@@ -7,7 +7,7 @@ var certifDetailsApp = new Vue({
   },
   methods: {
     fetchCertification() {
-      fetch('api/certification/fetchCerti.php')
+      fetch('api/certification/index.php')
       .then(response => response.json())
       .then(json => { certifDetailsApp.certifications = json })
     },
@@ -21,13 +21,11 @@ var certifDetailsApp = new Vue({
       })
       .then( response => response.json() )
       .then( json => {certifDetailsApp.certifications.push( json[0] )})
-      .then(this.fetchCertification())
       .catch( err => {
         console.error('RECORD POST ERROR:');
         console.error(err);
       });
       this.handleReset();
-      this.fetchCertification();
     },
     handleReset() {
       this.recordCerti = {

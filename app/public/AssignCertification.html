@@ -56,7 +56,9 @@
   <main>
     <body>
       <h2>Assign Member Certification</h2>
-
+      <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <form>
       <div id="personListApp">
         <div class="form-group">
           <div class="input-group mb-3">
@@ -103,6 +105,58 @@
           <button type="submit" class="btn"> Submit</button>
         </div>
       </form>
+    </form>
+   </div>
+    <div>
+    <table id="memberCertificationsApp" class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th>Certification ID</th>
+          <th>Person ID</th>
+          <th>Issued date</th>
+          <th>Expiration Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="m in membercertifications" @click="handleRowClick(m)">
+          <td>{{m.certificationId}}</td>
+          <td>{{m.personId}}</td>
+          <td>{{m.startDate}}</td>
+          <td>{{m.expirationDate}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<center>
+  <div id="memberCertificationsApp">
+      <div class="form-group">
+            <label for="Member">Member Id:</label>
+            <input id="Member" type="text" disabled v-model="selectedAssignCerti.personId">
+      </div>
+
+      <div class="form-group">
+            <label for="Certi">Certification Id:</label>
+            <input id="Certi"  type="text" disabled v-model="selectedAssignCerti.certificationId">
+      </div>
+      <div class="form-group">
+        <label>Start Date: </label>
+        <input type="date" v-model="selectedAssignCerti.startDate">
+      </div>
+
+      <div class="form-group">
+        <label>Expiration Date: </label>
+        <input type="date" v-model="selectedAssignCerti.expirationDate">
+      </div>
+
+      <div class="form-group-row">
+        <input type="submit" @click="handleEdit" class="btn" value="Update certification change">
+      </div>
+      <div class="form-group-row">
+        <input type="submit" @click="handleDelete" class="btn" value="Delete certification">
+      </div>
+  </div>
+</center>
       <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
         <div> OCFR: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Oconee County, Georgia 30605 |+1(707)456-3451 </div>
       </footer>

@@ -55,66 +55,51 @@
   </nav>
 
   <!-- Add User Heading (Change to an auto center command)-->
-  <main class="row">
-    <body>
-      <div class="mx-auto">
-        <h3>Certification Status Details</h3>
-      </div>
-      <table class="table table-condensed table-bordered">
-        <col>
-        <col>
-        <colgroup span="2"></colgroup>
+  <div class="mx-auto">
+    <h3>Member Certifications Details</h3>
+  </div>
+  <div id="memberCombinationApp">
+    <div class="filter row">
+      <label>Choose the member:</label>
+      <select v-model="filter.personId">
+        <option value="">(all)</option>
+        <option v-for="m in persons" v-bind:value="m.personId">
+          {{m.personId}} | {{m.firstName}} {{m.lastName}} - Station {{m.stationNumber}}
+        </option>
+      </select>
+    </div>
+    <div class="row">
+      <table class="table table-condensed table-bordered ">
         <thead>
           <tr>
-            <th scope="col">Member</th>
-            <th scope="col">Certifications</th>
-            <th colspan="2" scope="colgroup">Certification Status</th>
+            <th scope="col" v-if="filter.personId==''">Member</th>
+            <th scope="col">Certification</th>
+            <th scope="col">Certifying Agency</th>
+            <th scope="col">Issued/Renewed On</th>
+            <th scope="col">Certification Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th rowspan="3" scope="rowgroup">Kathryn Pryde</th>
-            <th scope="row">CPR</th>
-            <td>Renewed Jul 2017</td>
-            <td>Exp Jul/2019</td>
-          </tr>
-          <tr>
-            <th scope="row">Firefighter II</th>
-            <td>Renewed Aug/2018</td>
-            <td>Exp Aug/2020</td>
-          </tr>
-          <tr>
-            <th scope="row"> HAZMAT</th>
-            <td>Exp Feb/2020</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <th rowspan="3" scope="rowgroup">Warren Worthington III</th>
-            <th scope="row">CPR</th>
-            <td>Exp Jul/2020</td>
-          </tr>
-          <tr>
-            <th scope="row">Firefighter I</th>
-            <td>Exp Aug 2020</td>
-          </tr>
-          <tr>
-            <th scope="row">Paramedic</th>
-            <td>Exp Sep/2019</td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
-    <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
-      <div> OCFR: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Oconee County, Georgia 30605 |+1(707)456-3451 </div>
-    </footer>
-  </main>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="js/list.app.js"></script>
-  <script src="js/waiting.app.js"></script>
-  <script src="js/triage.app.js"></script>
+          <tr v-for="m in membercombination"
+          v-if="filter.personId=='' || m.personId==filter.personId">
+          <td v-if="filter.personId==''">{{m.firstName}} {{m.lastName}}</td>
+          <td>{{m.certificationName}}</td>
+          <td>{{m.certifyingAgency}}</td>
+          <td>{{m.issuedDate}}</td>
+          <td>Certificate Expires {{m.expirationDate}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
+  <div> OCFR: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Oconee County, Georgia 30605 |+1(707)456-3451 </div>
+</footer>
+</main>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/membercombo.app.js"></script>
 </body>
 </html>

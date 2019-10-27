@@ -33,6 +33,9 @@
           <a class="nav-link" href="AddCertification.html">Add Certification</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="AssignCertification.html">Assign Certification</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="certificationDetails.html">Certification Status</a>
         </li>
         <li class="nav-item">
@@ -52,42 +55,56 @@
   </nav>
   <main>
     <body>
-      <h2>Add Member Certification</h2>
+      <h2>Assign Member Certification</h2>
+
       <div id="personListApp">
         <div class="form-group">
-          <label>Choose the member: </label>
-        <select v-model="assignedMember.personId">
-          <option v-for="p in person" v-bind:value="p.personId">
-             {{p.personId}} | {{p.firstName}} | {{p.lastName}}
-             </option>
-         </select>
-       </div>
-      </div>
-       <div id="certifDetailsApp">
-         <div class="form-group">
-           <label>Choose the certification: </label>
-         <select v-model="selectedCerti.certificationId">
-           <option v-for="c in certifications" v-bind:value="c.certificationId">
-              {{c.certificationId}} | {{c.certificationName}} | {{c.expiryPeriod}} years
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="MemberSelect">Choose the member:</label>
+            </div>
+            <select v-model="assignedMember.personId">
+              <option v-for="p in person" v-bind:value="p.personId">
+                {{p.personId}} | {{p.firstName}} {{p.lastName}}
               </option>
-          </select>
+            </select>
+          </div>
         </div>
-       </div>
-       <form id="memberCertificationsApp" @submit.prevent="handleSubmit">
-       <div class="form-group">
-         <label>Start Date: </label>
-         <input type="date" v-model="assignedCerti.startDate">
       </div>
-      <div class="form-group">
-        <label>Expiration Date: </label>
-        <input type="date" v-model="assignedCerti.expirationDate">
-     </div>
-     <div class="form-group-row">
-     <button type="submit"> Submit</button>
-     </div>
-     </form>
+
+      <div id="certifDetailsApp">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="CertifSelect">Choose the certification:</label>
+            </div>
+            <select v-model="selectedCerti.certificationId">
+              <option v-for="c in certifications" v-bind:value="c.certificationId">
+                {{c.certificationId}} | {{c.certificationName}} - {{c.expiryPeriod}} years
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <form id="memberCertificationsApp" @submit.prevent="handleSubmit">
+        <div class="form-group">
+          <label>Start Date: </label>
+          <input type="date" v-model="assignedCerti.startDate">
+        </div>
+
+        <div class="form-group">
+          <label>Expiration Date: </label>
+          <input type="date" v-model="assignedCerti.expirationDate">
+        </div>
+
+        <div class="form-group-row">
+          <button type="submit" class="btn"> Submit</button>
+        </div>
+      </form>
       <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
-        <div> OCFRE: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Bloomington,Oconee County, Georgia 47408 |+1(812)456-345 </div>
+        <div> OCFR: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Oconee County, Georgia 30605 |+1(707)456-3451 </div>
       </footer>
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -96,6 +113,6 @@
       <script src="js/certdet.app.js"></script>
       <script src="js/membercertif.app.js"></script>
       <script src="js/list.app.js"></script>
-  </body>
-</main>
+    </body>
+  </main>
   </html>

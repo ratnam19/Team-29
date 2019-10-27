@@ -4,8 +4,17 @@
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$stmt = $db->prepare('SELECT * FROM Certification');
-$stmt->execute();
+if (isset($_GET['certificationId'])) {
+  $stmt = $db->prepare(
+    'SELECT * FROM Certification
+    WHERE certificationId = ?'
+  );
+  $stmt->execute([$_GET['certificationId']]);
+} else {
+  $stmt = $db->prepare('SELECT * FROM Certification');
+  $stmt->execute();
+}
+
 $certifications = $stmt->fetchAll();
 
 // Step 3: Convert to JSON

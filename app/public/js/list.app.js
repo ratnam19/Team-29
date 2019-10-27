@@ -8,7 +8,7 @@ var personListApp = new Vue({
   },
   methods: {
     fetchPersons() {
-      fetch('api/list/fetch.php')
+      fetch('api/list/index.php')
       .then(response => response.json())
       .then(json => { personListApp.person = json })
     },

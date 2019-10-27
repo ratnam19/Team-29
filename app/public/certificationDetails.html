@@ -10,7 +10,7 @@
 <body>
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B22222">
-    <a class="navbar-brand" href="#">Navigation</a>
+    <a class="navbar-brand" href="#">OCFR</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -53,37 +53,55 @@
       </ul>
     </div>
   </nav>
-  <main class="row">
+  <main>
     <body>
       <div class="mx-auto">
         <h3>Certification Status Details</h3>
       </div>
-
-      <table id="memberCombinationApp" class="table table-condensed table-bordered">
-        <col>
-        <col>
-        <colgroup span="3"></colgroup>
-        <thead>
-          <tr>
-            <th scope="col">Certification Name</th>
-            <th scope="col">Certifying Agency</th>
-            <th scope="col">Member</th>
-            <th scope="col">Position</th>
-            <th scope="colgroup">Certification Status</th>
-          </tr>
-        </thead>
-        <tbody v-for="c in membercombination">
-          <tr>
-            <th rowspan="3" scope="rowgroup">{{c.certificationName}}</th>
-            <th rowspan="3" scope="rowgroup">{{c.certifyingAgency}}</th>
-            <th rowspan="3">{{c.firstName}} {{c.lastName}}</th>
-            <th rowspan="3">{{c.position}}</th>
-            <th rowspan="3">Expires {{c.expirationDate}}</th>
-          </tr>
-        </tbody>
-      </table>
+      <div id="memberCombinationApp">
+        <div class="filter">
+          <label>Choose the certification:</label>
+          <select v-model="filter.certificationName">
+            <option value="">(all)</option>
+            <option v-for="c in certifications" v-bind:value="c.certificationName">
+              {{c.certificationId}} | {{c.certificationName}} - {{c.expiryPeriod}} years
+            </option>
+          </select>
+        </div>
+        <div>
+          <table class="table table-condensed table-bordered ">
+            <thead>
+              <tr>
+                <th scope="col" v-if="filter.certificationName==''">Certification</th>
+                <th scope="col">Member</th>
+                <th scope="col">Position</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Station number</th>
+                <th scope="col">Radio number</th>
+                <th scope="col">City</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Issued/Renewed On</th>
+                <th scope="col">Certification Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="c in membercombination"
+              v-if="filter.certificationName=='' || c.certificationName==filter.certificationName">
+              <td v-if="filter.certificationName==''">{{c.certificationName}}</td>
+              <td>{{c.firstName}} {{c.lastName}}</td>
+              <td>{{c.position}}</td>
+              <td>{{c.gender}}</td>
+              <td>{{c.stationNumber}}</td>
+              <td>{{c.radioNumber}}</td>
+              <td>{{c.city}}</td>
+              <td>{{c.mobilePhone}}</td>
+              <td>{{c.issuedDate}}</td>
+              <td>Certificate Expires {{c.expirationDate}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </body>
   <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
     <div> OCFR: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Oconee County, Georgia 30605 |+1(707)456-3451 </div>
   </footer>

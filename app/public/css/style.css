@@ -41,6 +41,17 @@ footer {
   text-align: center;
   font-weight: bold;
 }
+
+.navbar-nav{
+  color: rgb(255,255,255);
+}
+.nav-link{
+  color: rgb(255,255,255);
+}
+.inner {
+    width: 600px;
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
 .but {
   padding: 15px;
   margin: auto;

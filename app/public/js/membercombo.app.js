@@ -9,6 +9,11 @@ var memberCombinationApp = new Vue({
     personId: ''
    }
   },
+  computed: {
+    now: function () {
+      return Date.now()
+    }
+  },
   methods: {
     fetchmemberCombination() {
       fetch('api/reports/index.php')
@@ -24,7 +29,14 @@ var memberCombinationApp = new Vue({
       fetch('api/certification/index.php')
       .then(response => response.json())
       .then(json => { memberCombinationApp.certifications = json })
-    }
+    },
+    expiredDate(c) {
+      this.membercombination = c;
+    if(moment(this.membercombination.expirationDate).isAfter(new Date(), 'day'))
+     return false;
+    else
+     return true;
+   }
   },
   created() {
     this.fetchmemberCombination();

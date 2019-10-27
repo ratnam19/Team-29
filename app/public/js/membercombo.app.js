@@ -16,12 +16,12 @@ var memberCombinationApp = new Vue({
       .then(json => { memberCombinationApp.membercombination = json })
     },
     fetchMembers() {
-      fetch('api/reports/fetchPersons.php')
+      fetch('api/list/index.php')
       .then(response => response.json())
       .then(json => { memberCombinationApp.persons = json })
     },
     fetchCertifications() {
-      fetch('api/reports/fetchCertis.php')
+      fetch('api/certification/index.php')
       .then(response => response.json())
       .then(json => { memberCombinationApp.certifications = json })
     }

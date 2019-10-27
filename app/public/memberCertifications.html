@@ -59,8 +59,8 @@
     <h3>Member Certifications Details</h3>
   </div>
   <div id="memberCombinationApp">
-    <div class="filter row">
-      <label>Choose the member:</label>
+    <div class="filter row form-group">
+      <label>Choose the member: </label>
       <select v-model="filter.personId">
         <option value="">(all)</option>
         <option v-for="m in persons" v-bind:value="m.personId">
@@ -68,9 +68,32 @@
         </option>
       </select>
     </div>
+    <center>
     <div class="row">
-      <table class="table table-condensed table-bordered ">
-        <thead>
+      <div v-for="m in persons"  v-if="filter.personId==m.personId"
+       class="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-xs-8">
+        <h4>MEMBER DETAIL</h4>
+        Member ID : {{m.personId}} <br>
+        Member Name : {{m.firstName}} {{m.lastName}} <br>
+        Position: {{m.position}} <br>
+        Station Number: {{m.stationNumber}} <br>
+        Radio Number : {{m.radioNumber}} <br>
+        Date of Birth: {{m.dob}} <br>
+        Gender: {{m.gender}} <br>
+        Email : {{m.email}} <br>
+        Mobile Phone : {{m.mobilePhone}} <br>
+        Work Phone: {{m.workPhone}}<br>
+        Address: {{m.street}}, {{m.city}}, {{m.state}}, {{m.region}}, {{m.zip}}<br>
+        <span v-if="m.isActive==0">Status: Active <br></span>
+        <span v-if="m.isActive==1">Status: Inactive</span><br>
+      </div>
+      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-xs-8">
+      <br>
+      <table align="center" class="table table-sm table-bordered textcentered">
+        <caption v-for="p in persons"v-if="p.personId==filter.personId">
+          Certificates of {{p.firstName}} {{p.lastName}}
+        </caption>
+        <thead class="thead-dark">
           <tr>
             <th scope="col" v-if="filter.personId==''">Member</th>
             <th scope="col">Certification</th>

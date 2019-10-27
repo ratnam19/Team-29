@@ -64,13 +64,27 @@
           <select v-model="filter.certificationName">
             <option value="">(all)</option>
             <option v-for="c in certifications" v-bind:value="c.certificationName">
-              {{c.certificationId}} | {{c.certificationName}} - {{c.expiryPeriod}} years
+              {{c.certificationName}}
             </option>
           </select>
         </div>
-        <div>
-          <table class="table table-condensed table-bordered ">
-            <thead>
+        <center>
+        <div class="row">
+          <div v-for="c in certifications"
+          v-if="c.certificationName==filter.certificationName" class="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-xs-8">
+            <h4>CERTIFICATION DETAIL</h4>
+            Certification ID : {{c.certificationId}} <br>
+            Certification Name : {{c.certificationName}} <br>
+            Certifying Agency: {{c.certifyingAgency}} <br>
+            Standard Expiry : {{c.expiryPeriod}} years
+          </div>
+          <div class="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-xs-8">
+          <br>
+          <table align="center" class="table table-sm table-bordered ">
+            <caption v-for="c in certifications"v-if="c.certificationName==filter.certificationName">
+              Members having the {{c.certificationName}} certification
+            </caption>
+            <thead class="thead-dark">
               <tr>
                 <th scope="col" v-if="filter.certificationName==''">Certification</th>
                 <th scope="col">Member</th>
@@ -101,6 +115,8 @@
           </tbody>
         </table>
       </div>
+      </div>
+    </center>
     </div>
   <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
     <div> OCFR: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Oconee County, Georgia 30605 |+1(707)456-3451 </div>

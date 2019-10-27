@@ -33,6 +33,9 @@
           <a class="nav-link" href="AddCertification.html">Add Certification</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="AssignCertification.html">Assign Certification</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="certificationDetails.html">Certification Status</a>
         </li>
         <li class="nav-item">
@@ -52,24 +55,37 @@
   </nav>
   <main>
     <body>
+      <!-- Add Certification Heading (Change to an auto center command)-->
+      <div id="certifDetailsApp" class="row">
+        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-6 col-xs-6">
+          <div class="mx-auto">
+            <h3>Add Certification</h3>
+          </div>
 
-      <div>
-        <!-- Add Certification Heading (Change to an auto center command)-->
-        <div id="certifDetailsApp" class="row">
-        <div class="col-xl-4 col-md-4 col-sm-6 col-xs-6">
-        <div class="mx-auto" style="width:200px;">
-          <h3>Add Certification</h3>
-        </div>
-
-        <!-- Add Certification Form -->
-        <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
-          <div>
-            <form @submit.prevent="handleSubmit" class="form-inline">
-              <div class="row col-xl-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="form-group col-xl-12 col-md-12 col-sm-12 col-xs-12">
-                  <label for="certificationName">Certification Name</label>
-                  <input type="text" class="form-control" id="certificationName" aria-describedby="Certi" placeholder="Certification Name" v-model="recordCerti.certificationName">
+          <!-- Add Certification Form -->
+          <div class="row" style="margin:10px">
+            <div class="container-fluid">
+              <form @submit.prevent="handleSubmit" style="padding:0px">
+                <div>
+                  <div class="form-group">
+                    <div>
+                      <label for="certificationName">Certification Name</label>
+                      <input type="text" class="form-control" id="certificationName" aria-describedby="Certi" placeholder="Name of Certification" v-model="recordCerti.certificationName">
+                    </div>
+                    <div>
+                      <label for="certifyingAgency">Certifying Agency</label>
+                      <input type="text" class="form-control" id="certifyingAgency" aria-describedby="Agency" placeholder="Certifying Agency" v-model="recordCerti.certifyingAgency">
+                    </div>
+                    <div>
+                      <label for="expiryPeriod">Expiry Period</label>
+                      <input type="number" class="form-control" id="expiryPeriod" aria-describedby="Expiration" placeholder="Years  " v-model="recordCerti.expiryPeriod">
+                    </div>
+                  </div>
+                  <div>
+                    <button type="submit" class="btn center">Create New Certification</button>
+                  </div>
                 </div>
+<<<<<<< HEAD
                 <div class="form-group col-xl-12 col-md-12 col-sm-12 col-xs-12">
                   <label for="certifyingAgency">Certifying Agency</label>
                   <input type="text" class="form-control" id="certifyingAgency" aria-describedby="Agency" placeholder="Certifying Agency" v-model="recordCerti.certifyingAgency">
@@ -81,44 +97,53 @@
                 <div class="form-group col-xl-12 col-md-12 col-sm-12 col-xs-12">
                 <button type="submit" class="btn btn-danger center">Create New Certification</button>
 
+=======
+              </form>
+              <div>
+                <input type="submit" class="btn center" v-on:click="handleEdit" value="Save Edited Certification">
               </div>
-
+              <div>
+                <input type="submit" class="btn center" v-on:click="handleDelete" value="Delete Certification">
+>>>>>>> 104426046c9b498f546615a2aa97b948639a6c61
+              </div>
             </div>
+<<<<<<< HEAD
           </form>
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-xs-12 but">
           <input type="submit" class="btn btn-danger center" v-on:click="handleEdit" value="Save Edited Certification">
         </div>
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-xs-12 but">
           <input type="submit" class="btn btn-danger center" v-on:click="handleDelete" value="Delete Certification">
+=======
+          </div>
+>>>>>>> 104426046c9b498f546615a2aa97b948639a6c61
         </div>
-        </div>
-      </div>
-    </div>
-      <div class="col-xl-8 col-md-8 col-sm-6 col-xs-6">
-      <div class="mx-auto">
-        <h3>Certifications</h3>
-      </div>
 
-      <table class="table table-sm table-hover">
-        <thead>
-          <tr>
-            <th>Certification Name</th>
-            <th>Certification Agency</th>
-            <th>Standard Expiry Period</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="c in certifications" @click="handleRowClick(c)">
-            <td>{{c.certificationName}}</td>
-            <td>{{c.certifyingAgency}}</td>
-            <td>{{c.expiryPeriod}} years</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+        <div>
+          <div>
+            <h3>Certifications</h3>
+          </div>
+
+          <table class="table table-sm table-hover">
+            <thead>
+              <tr>
+                <th>Certification Name</th>
+                <th>Certification Agency</th>
+                <th>Standard Expiry Period</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="c in certifications" @click="handleRowClick(c)">
+                <td>{{c.certificationName}}</td>
+                <td>{{c.certifyingAgency}}</td>
+                <td>{{c.expiryPeriod}} years</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
       <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
-        <div> OCFRE: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Bloomington,Oconee County, Georgia 47408 |+1(812)456-345 </div>
+        <div> OCFR: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Oconee County, Georgia 30605 |+1(707)456-3451 </div>
       </footer>
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

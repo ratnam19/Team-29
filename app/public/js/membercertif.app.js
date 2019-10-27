@@ -6,7 +6,7 @@ var memberCertificationsApp = new Vue({
   },
   methods: {
     fetchmemberCertification() {
-      fetch('api/memberCertis/fetch.php')
+      fetch('api/memberCertis/index.php')
       .then(response => response.json())
       .then(json => { memberCertificationsApp.membercertifications = json })
     },

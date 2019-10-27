@@ -4,10 +4,11 @@
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-
-$stmt = $db->prepare('SELECT * FROM Person');
+$stmt = $db->prepare(
+  'SELECT * FROM innodb.CertificationStatus cs, innodb.Person p, innodb.Certification c
+WHERE cs.personId = p.personId and c.certificationId = cs.certificationId'
+);
 $stmt->execute();
-
 $persons = $stmt->fetchAll();
 
 // Step 3: Convert to JSON

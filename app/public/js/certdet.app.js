@@ -2,7 +2,8 @@ var certifDetailsApp = new Vue({
   el: '#certifDetailsApp',
   data: {
     certifications: [],
-    recordCerti: {}
+    recordCerti: {},
+    selectedCerti: {}
   },
   methods: {
     fetchCertification() {
@@ -20,12 +21,13 @@ var certifDetailsApp = new Vue({
       })
       .then( response => response.json() )
       .then( json => {certifDetailsApp.certifications.push( json[0] )})
-      .then(() => {this.fetchCertification() })
+      .then(this.fetchCertification())
       .catch( err => {
         console.error('RECORD POST ERROR:');
         console.error(err);
       });
       this.handleReset();
+      this.fetchCertification();
     },
     handleReset() {
       this.recordCerti = {
@@ -48,11 +50,13 @@ var certifDetailsApp = new Vue({
       })
       .then( response => response.json() )
       .then( json => {certifDetailsApp.certifications.push( json[0] )})
+      .then(this.fetchCertification())
       .catch( err => {
         console.error('RECORD EDIT ERROR:');
         console.error(err);
       });
       this.handleReset();
+      this.fetchCertification();
     },
     handleDelete(event) {
       fetch('api/certification/delete.php', {
@@ -64,11 +68,13 @@ var certifDetailsApp = new Vue({
       })
       .then( response => response.json() )
       .then(json => { certifDetailsApp.certifications = json })
+      .then(this.fetchCertification())
       .catch( err => {
         console.error('RECORD DELETE ERROR:');
         console.error(err);
       });
       this.handleReset();
+      this.fetchCertification();
     }
   }, // end methods
   created() {

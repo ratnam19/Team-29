@@ -1,7 +1,10 @@
 var memberCombinationApp = new Vue({
   el: '#memberCombinationApp',
   data: {
-    membercombination: []
+    membercombination: [],
+    filter: {
+    certificationName: ''
+  }
   },
   methods: {
     fetchmemberCombination() {

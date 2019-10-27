@@ -33,9 +33,9 @@ $stmt->execute([
   $_POST['personId']
 ]);
 
-$personId = $_POST['personId'];
+
 
 // Step 4: Output
 header('HTTP/1.1 303 See Other');
 header('Content-Type: application/json');
-header('Location: ../list/?personId=' . $personId);
+header('Location: ../list/');

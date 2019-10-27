@@ -2,7 +2,8 @@ var memberCertificationsApp = new Vue({
   el: '#memberCertificationsApp',
   data: {
     membercertifications: [],
-    assignedCerti: {}
+    assignedCerti: {},
+    selectedAssignCerti: {}
   },
   methods: {
     fetchmemberCertification() {
@@ -39,13 +40,13 @@ var memberCertificationsApp = new Vue({
         expirationDate: ''
       }
     },
-    handleRowClick(certification) {
-      memberCertificationsApp.assignedCerti = certification;
+    handleRowClick(m) {
+      memberCertificationsApp.selectedAssignCerti = m;
     },
     handleEdit(event) {
       fetch('api/memberCertis/edit.php', {
         method: 'POST',
-        body: JSON.stringify(this.assignedCerti),
+        body: JSON.stringify(this.selectedAssignCerti),
         headers: {
           "Content-Type": "application/json; charset=utf-8"
         }
@@ -63,7 +64,7 @@ var memberCertificationsApp = new Vue({
     handleDelete(event) {
       fetch('api/memberCertis/delete.php', {
         method: 'POST',
-        body: JSON.stringify(this.assignedCerti),
+        body: JSON.stringify(this.selectedAssignCerti),
         headers: {
           "Content-Type": "application/json; charset=utf-8"
         }

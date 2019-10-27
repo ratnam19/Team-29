@@ -63,11 +63,13 @@ var personListApp = new Vue({
       })
       .then( response => response.json() )
       .then( json => {personListApp.person.push( json[0] )})
+      .then(this.fetchPersons())
       .catch( err => {
         console.error('RECORD EDIT ERROR:');
         console.error(err);
       });
       this.handleReset();
+      this.fetchPersons();
     },
     handleDelete(event) {
       fetch('api/list/delete.php', {
@@ -79,11 +81,13 @@ var personListApp = new Vue({
       })
       .then( response => response.json() )
       .then(json => { personListApp.person = json })
+      .then(this.fetchPersons())
       .catch( err => {
         console.error('RECORD DELETE ERROR:');
         console.error(err);
       });
       this.handleReset();
+      this.fetchPersons();
     }
   }, // end methods
   created() {

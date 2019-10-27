@@ -4,10 +4,16 @@ var memberCombinationApp = new Vue({
     membercombination: [],
     persons: [],
     certifications: [],
+    expiredCerti: {},
     filter: {
     certificationName: '',
     personId: ''
    }
+  },
+  computed: {
+    now: function () {
+      return Date.now()
+    }
   },
   methods: {
     fetchmemberCombination() {
@@ -24,7 +30,14 @@ var memberCombinationApp = new Vue({
       fetch('api/certification/index.php')
       .then(response => response.json())
       .then(json => { memberCombinationApp.certifications = json })
-    }
+    },
+    expiredDate(c) {
+      this.expiredCerti = c;
+    if(moment(this.expiredCerti.expirationDate).isAfter(new Date(), 'day'))
+     return false;
+    else
+     return true;
+   }
   },
   created() {
     this.fetchmemberCombination();

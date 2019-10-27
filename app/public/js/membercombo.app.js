@@ -4,6 +4,7 @@ var memberCombinationApp = new Vue({
     membercombination: [],
     persons: [],
     certifications: [],
+    expiredCerti: {},
     filter: {
     certificationName: '',
     personId: ''
@@ -31,8 +32,8 @@ var memberCombinationApp = new Vue({
       .then(json => { memberCombinationApp.certifications = json })
     },
     expiredDate(c) {
-      this.membercombination = c;
-    if(moment(this.membercombination.expirationDate).isAfter(new Date(), 'day'))
+      this.expiredCerti = c;
+    if(moment(this.expiredCerti.expirationDate).isAfter(new Date(), 'day'))
      return false;
     else
      return true;

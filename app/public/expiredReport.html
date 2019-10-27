@@ -94,7 +94,7 @@
             </thead>
             <tbody>
               <tr v-for="c in membercombination"
-              v-if="((filter.certificationName=='' || c.certificationName==filter.certificationName) && expiredDate(c))">
+              v-if="(filter.certificationName=='' || c.certificationName==filter.certificationName && expiredDate(c))">
               <td v-if="filter.certificationName==''">{{c.certificationName}}</td>
               <td>{{c.firstName}} {{c.lastName}}</td>
               <td>{{c.position}}</td>
@@ -104,8 +104,8 @@
               <td>{{c.city}}</td>
               <td>{{c.mobilePhone}}</td>
               <td>{{c.issuedDate}}</td>
-              <td>Current</td>
-              <td>Expired</td>
+              <td v-if="expiredDate(c)==false">Current</td>
+              <td v-if="expiredDate(c)==true">Expired</td>
             </tr>
           </tbody>
         </table>

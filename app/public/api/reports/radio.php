@@ -4,15 +4,14 @@
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$stmt = $db->prepare(
-  'SELECT *
-  FROM Certification'
-);
-$stmt->execute();
-$certis = $stmt->fetchAll();
+
+  $stmt = $db->prepare('SELECT DISTINCT radioNumber FROM Person');
+  $stmt->execute();
+
+$persons = $stmt->fetchAll();
 
 // Step 3: Convert to JSON
-$json = json_encode($certis, JSON_PRETTY_PRINT);
+$json = json_encode($persons, JSON_PRETTY_PRINT);
 
 // Step 4: Output
 header('Content-Type: application/json');

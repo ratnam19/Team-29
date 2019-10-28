@@ -48,6 +48,8 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="CertificationList.html">Certifications</a>
             <a class="dropdown-item" href="MemberList.html">Member Summary</a>
+            <a class="dropdown-item" href="expiredReport.html">Members- Expired Certifications</a>
+            <a class="dropdown-item" href="stationReport.html">Members - Station & Radio Number</a>
           </div>
         </li>
       </ul>
@@ -56,41 +58,34 @@
   <main>
     <body>
       <h2>Assign Member Certification</h2>
-      <div class="row">
+      <div id="memberCertificationsApp"  class="row">
       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-      <form>
-      <div id="personListApp">
+      <form @submit.prevent="handleSubmit">
         <div class="form-group">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <label class="input-group-text" for="MemberSelect">Choose the member:</label>
+              <label class="input-group-text">Choose the member:</label>
             </div>
-            <select v-model="assignedMember.personId">
-              <option v-for="p in person" v-bind:value="p.personId">
+            <select v-model="assignedCerti.personId">
+              <option v-for="p in persons" v-bind:value="p.personId">
                 {{p.personId}} | {{p.firstName}} {{p.lastName}}
               </option>
             </select>
           </div>
         </div>
-      </div>
-
-      <div id="certifDetailsApp">
         <div class="form-group">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <label class="input-group-text" for="CertifSelect">Choose the certification:</label>
+              <label class="input-group-text">Choose the certification:</label>
             </div>
-            <select v-model="selectedCerti.certificationId">
+            <select v-model="assignedCerti.certificationId">
               <option v-for="c in certifications" v-bind:value="c.certificationId">
                 {{c.certificationId}} | {{c.certificationName}} - {{c.expiryPeriod}} years
               </option>
             </select>
           </div>
         </div>
-      </div>
 
-
-      <form id="memberCertificationsApp" @submit.prevent="handleSubmit">
         <div class="form-group">
           <label>Start Date: </label>
           <input type="date" v-model="assignedCerti.startDate">
@@ -102,15 +97,13 @@
         </div>
 
         <div class="form-group-row">
-          <button type="submit" class="btn"> Submit</button>
+          <button type="submit" class="btn">Assign Certification</button>
         </div>
-      </form>
     </form>
    </div>
 
-  <div id="memberCertificationsApp">
     <div>
-    <table id="memberCertificationsApp" class="table table-sm table-hover">
+    <table class="table table-sm table-hover">
       <thead>
         <tr>
           <th>Certification ID</th>
@@ -128,9 +121,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
 <center>
-
 
       <div class="form-group">
             <label for="Member">Member Id:</label>
@@ -159,6 +150,7 @@
       </div>
   </div>
 </center>
+</div>
       <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
         <div> OCFR: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Oconee County, Georgia 30605 |+1(707)456-3451 </div>
       </footer>
@@ -166,9 +158,7 @@
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      <script src="js/certdet.app.js"></script>
       <script src="js/membercertif.app.js"></script>
-      <script src="js/list.app.js"></script>
     </body>
   </main>
   </html>

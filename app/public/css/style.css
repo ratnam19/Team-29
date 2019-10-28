@@ -8,6 +8,9 @@ h2{
   text-align: center;
   padding: 30px;
 }
+.code{
+  color: beige;
+}
 h3{
   color: maroon;
   text-align: center;
@@ -16,8 +19,8 @@ form{
   padding: 15px;
   margin: 0 auto;
 }
-table{
-  margin: auto;
+.filter{
+  margin:20px;
 }
 a{
   color:black;

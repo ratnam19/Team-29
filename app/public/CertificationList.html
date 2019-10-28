@@ -48,6 +48,8 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="CertificationList.html">Certifications</a>
             <a class="dropdown-item" href="MemberList.html">Member Summary</a>
+            <a class="dropdown-item" href="expiredReport.html">Members - Expired Certifications</a>
+            <a class="dropdown-item" href="stationReport.html">Members - Station & Radio Number</a>
           </div>
         </li>
       </ul>
@@ -59,8 +61,35 @@
       <div class="mx-auto">
         <h3>Certification List</h3>
       </div>
-
-      <table id="certifDetailsApp" class="table table-sm table-hover">
+      <div id="certifDetailsApp" class="row">
+      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+        <form style="padding:0px">
+          <div>
+            <div class="form-group">
+              <div>
+                <label for="certificationName">Certification Name</label>
+                <input type="text" class="form-control" id="certificationName" aria-describedby="Certi" placeholder="Name of Certification" v-model="recordCerti.certificationName">
+              </div>
+              <div>
+                <label for="certifyingAgency">Certifying Agency</label>
+                <input type="text" class="form-control" id="certifyingAgency" aria-describedby="Agency" placeholder="Certifying Agency" v-model="recordCerti.certifyingAgency">
+              </div>
+              <div>
+                <label for="expiryPeriod">Expiry Period</label>
+                <input type="number" class="form-control" id="expiryPeriod" aria-describedby="Expiration" placeholder="Years  " v-model="recordCerti.expiryPeriod">
+              </div>
+            </div>
+          </div>
+        </form>
+        <div style="padding:5px;" >
+          <input  type="submit" class="btn center" v-on:click="handleEdit" value="Save Edited Certification">
+        </div>
+        <div style="padding:5px;">
+          <input  type="submit" class="btn center" v-on:click="handleDelete" value="Delete Certification">
+        </div>
+      </div>
+      <div  class="col-lg-7 col-md-7 col-sm-5 col-xs-5">
+      <table class="table table-sm table-hover">
         <thead>
           <tr>
             <th>Certification Id</th>
@@ -70,7 +99,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="c in certifications">
+          <tr v-for="c in certifications" @click=handleRowClick(c)>
             <td>{{c.certificationId}}</td>
             <td>{{c.certificationName}}</td>
             <td>{{c.certifyingAgency}}</td>
@@ -78,6 +107,8 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    </div>
       <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
         <div> OCFR: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Oconee County, Georgia 30605 |+1(707)456-3451 </div>
       </footer>

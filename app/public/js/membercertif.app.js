@@ -3,7 +3,9 @@ var memberCertificationsApp = new Vue({
   data: {
     membercertifications: [],
     assignedCerti: {},
-    selectedAssignCerti: {}
+    selectedAssignCerti: {},
+    persons : [],
+    certifications :[]
   },
   methods: {
     fetchmemberCertification() {
@@ -11,9 +13,17 @@ var memberCertificationsApp = new Vue({
       .then(response => response.json())
       .then(json => { memberCertificationsApp.membercertifications = json })
     },
+    fetchMembers() {
+      fetch('api/list/index.php')
+      .then(response => response.json())
+      .then(json => { memberCertificationsApp.persons = json })
+    },
+    fetchCertifications() {
+      fetch('api/certification/index.php')
+      .then(response => response.json())
+      .then(json => { memberCertificationsApp.certifications = json })
+    },
     handleSubmit(event) {
-      this.assignedCerti.certificationId = certifDetailsApp.selectedCerti.certificationId;
-      this.assignedCerti.personId = personListApp.assignedMember.personId;
       fetch('api/memberCertis/post.php', {
         method: 'POST',
         body: JSON.stringify(this.assignedCerti),
@@ -24,9 +34,8 @@ var memberCertificationsApp = new Vue({
       .then( response => response.json() )
       .then( json => {memberCertificationsApp.membercertifications.push( json[0] )})
       .then(this.fetchmemberCertification())
-      .then(console.log('Fetch'))
       .catch( err => {
-        console.error('RECORD POST ERROR:');
+        console.error('RECORD EDIT ERROR:');
         console.error(err);
       });
       this.handleReset();
@@ -83,5 +92,7 @@ var memberCertificationsApp = new Vue({
   created() {
     this.handleReset();
     this.fetchmemberCertification();
+    this.fetchMembers();
+    this.fetchCertifications();
   }
 });

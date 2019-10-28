@@ -17,7 +17,6 @@ $stmt->execute([
   $_POST['expirationDate']
 ]);
 
-
 // Step 4: Output
 header('HTTP/1.1 303 See Other');
 header('Content-Type: application/json');

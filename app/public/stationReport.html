@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="css\style.css">
-  <title>Members - Expired Certifications</title>
+  <title>Members - Station & Radio</title>
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -58,29 +58,40 @@
   <main>
     <body>
       <div class="mx-auto">
-        <h3>Report- Members with Expired Certifications</h3>
+        <h3>Report: Members by Station & Radio Number</h3>
       </div>
-      <div id="memberCombinationApp">
+      <div id="personListApp">
         <div class="filter">
-          <label>Choose the certification:</label>
-          <select v-model="filter.certificationName">
+          <label>Choose the Station Number:</label>
+          <select v-model="filter.stationNumber">
             <option value="">(all)</option>
-            <option v-for="c in certifications" v-bind:value="c.certificationName">
-              {{c.certificationName}}
+            <option v-for="s in stations" v-bind:value="s.stationNumber">
+              {{s.stationNumber}}
             </option>
           </select>
+        </div>
+        <div class="filter">
+          <label>Choose the Radio Number:</label>
+          <select v-model="filter.radioNumber">
+            <option value="">(all)</option>
+            <option v-for="r in radios" v-bind:value="r.radioNumber">
+              {{r.radioNumber}}
+            </option>
+          </select>
+        </div>
+        <div>
+          <button onclick="exportTableToCSV('members.csv')">Export Results to CSV</button>
         </div>
         <center>
         <div class="row">
           <div class="col-xl-9 col-lg-9 col-md-9 col-sm-8 col-xs-8">
           <br>
           <table align="center" class="table table-sm table-bordered ">
-            <caption v-for="c in certifications"v-if="c.certificationName==filter.certificationName">
-              Members having the expired {{c.certificationName}} certification
+            <caption>
+              Members for Radio {{filter.radioNumber}} and Station {{filter.stationNumber}}
             </caption>
             <thead class="thead-dark">
               <tr>
-                <th scope="col" v-if="filter.certificationName==''">Certification</th>
                 <th scope="col">Member</th>
                 <th scope="col">Position</th>
                 <th scope="col">Gender</th>
@@ -88,29 +99,35 @@
                 <th scope="col">Radio number</th>
                 <th scope="col">City</th>
                 <th scope="col">Mobile</th>
-                <th scope="col">Certificate Issued/Renewed On</th>
-                <th scope="col">Certification Status</th>
+                <th scope="col">Email</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Member Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="c in membercombination"
-              v-if="filter.certificationName=='' || c.certificationName==filter.certificationName">
-              <td v-if="filter.certificationName==''">{{c.certificationName}}</td>
-              <td>{{c.firstName}} {{c.lastName}}</td>
-              <td>{{c.position}}</td>
-              <td>{{c.gender}}</td>
-              <td>{{c.stationNumber}}</td>
-              <td>{{c.radioNumber}}</td>
-              <td>{{c.city}}</td>
-              <td>{{c.mobilePhone}}</td>
-              <td>{{c.issuedDate}}</td>
-              <td v-if="c.expirationDate">Expired</td>
+              <tr v-for="p in person"
+              v-if="(filter.stationNumber=='' || p.stationNumber==filter.stationNumber) &&
+              (filter.radioNumber=='' || p.radioNumber==filter.radioNumber)">
+              <td>{{p.firstName}} {{p.lastName}}</td>
+              <td>{{p.position}}</td>
+              <td>{{p.gender}}</td>
+              <td>{{p.stationNumber}}</td>
+              <td>{{p.radioNumber}}</td>
+              <td>{{p.city}}</td>
+              <td>{{p.mobilePhone}}</td>
+              <td>{{p.email}}</td>
+              <td>{{p.startDate}}</td>
+              <td v-if="p.isActive==1">Active</td>
+              <td v-if="p.isActive==0">Inactive</td>
             </tr>
           </tbody>
         </table>
       </div>
       </div>
     </center>
+    </div>
+    <div class="code">
+      Source code (Export to CSV) from: <a href="https://www.codexworld.com/export-html-table-data-to-csv-using-javascript/">CodexWorld</a>
     </div>
   <footer class="col-xl-12 col-lg-12 col-md-12 col-sm-8 col-xs-8" >
     <div> OCFR: <a id="af" href="https://wiseoldsayings.com/firefighter-quotes/">Website</a> | Oconee County, Georgia 30605 |+1(707)456-3451 </div>
@@ -120,6 +137,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="js/membercombo.app.js"></script>
+<script src="js/list.app.js"></script>
+<script src="js/reportsCSV.app.js"></script>
 </body>
 </html>

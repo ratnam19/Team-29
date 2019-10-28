@@ -8,6 +8,9 @@ h2{
   text-align: center;
   padding: 30px;
 }
+.code{
+  color: beige;
+}
 h3{
   color: maroon;
   text-align: center;
@@ -18,12 +21,6 @@ form{
 }
 .filter{
   margin:20px;
-}
-.theadC{
-  background-color: yellow
-}
-.theadP{
-  background-color: black
 }
 a{
   color:black;
@@ -58,4 +55,3 @@ footer {
     width: 600px;
     overflow: hidden; /* will contain if #first is longer than #second */
 }
-

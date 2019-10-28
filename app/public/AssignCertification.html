@@ -93,16 +93,16 @@
       <form id="memberCertificationsApp" @submit.prevent="handleSubmit">
         <div class="form-group">
           <label>Start Date: </label>
-          <input type="date" v-model="assignedCerti.startDate">
+          <input type="date" style="width:30%" v-model="assignedCerti.startDate">
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="width:50%">
           <label>Expiration Date: </label>
-          <input type="date" v-model="assignedCerti.expirationDate">
+          <input type="date" style="width:50%" v-model="assignedCerti.expirationDate">
         </div>
 
         <div class="form-group-row">
-          <button type="submit" class="btn"> Submit</button>
+          <button type="submit" class="btn btn-danger"> Submit</button>
         </div>
       </form>
     </form>
@@ -132,7 +132,7 @@
   <div id="memberCertificationsApp">
       <div class="form-group">
             <label for="Member">Member Id:</label>
-            <input id="Member" type="text" disabled v-model="selectedAssignCerti.personId">
+            <input id="Member" type="text" disabled v-model="selectedAssignCerti.personId" style="width:100%">
       </div>
 
       <div class="form-group">
@@ -150,10 +150,10 @@
       </div>
 
       <div style="padding:5px;" class="form-group-row">
-        <input type="submit" @click="handleEdit" class="btn" value="Update certification change">
+        <input type="submit" @click="handleEdit" class="btn btn-danger" value="Update certification change">
       </div>
       <div style="padding-bottom:5px;" class="form-group-row">
-        <input type="submit" @click="handleDelete" class="btn" value="Delete certification">
+        <input type="submit" @click="handleDelete" class="btn btn-danger" value="Delete certification">
       </div>
   </div>
 </center>

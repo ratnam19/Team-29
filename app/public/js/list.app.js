@@ -2,15 +2,32 @@ var personListApp = new Vue({
   el: '#personListApp',
   data: {
     person: [],
+    radios: [],
+    stations: [],
     assignedMember:{},
     selectedPerson: {},
-    recordPerson: {}
+    recordPerson: {},
+    filter: {
+    radioNumber: '',
+    stationNumber: ''
+   }
   },
   methods: {
     fetchPersons() {
       fetch('api/list/index.php')
       .then(response => response.json())
       .then(json => { personListApp.person = json })
+    },
+    fetchRadios() {
+      fetch('api/reports/radio.php')
+      .then(response => response.json())
+      .then(json => { personListApp.radios = json })
+      .then(console.log('radios'))
+    },
+    fetchStations() {
+      fetch('api/reports/station.php')
+      .then(response => response.json())
+      .then(json => { personListApp.stations = json })
     },
     handleSubmit(event) {
       fetch('api/list/post.php', {
@@ -93,5 +110,7 @@ var personListApp = new Vue({
   created() {
     this.handleReset();
     this.fetchPersons();
+    this.fetchRadios();
+    this.fetchStations();
   }
 });
